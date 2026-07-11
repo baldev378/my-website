@@ -51,19 +51,12 @@ fetchDogBtn.addEventListener("click", function() {
     });
 });
 
-    fetch("http://localhost:3000/api/tasks")
-.then (function(responce) {
-    return responce.json();
-})
-.then(function(data) {
-    console.log(data);
-});
 
 const newTaskInput = document.getElementById("newTaskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 
 addTaskBtn.addEventListener("click", function() {
-    fetch("http://localhost:3000/api/tasks", {
+    fetch("http://my-backend-nqso.onrender.com/api/tasks", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ task: newTaskInput.value })
@@ -76,4 +69,36 @@ addTaskBtn.addEventListener("click", function() {
     newTaskInput.value = "";
 });
 });
-fetch("https://my-backend-nqso.onrender.com/api/tasks")
+
+const { animate, inView } = Motion;
+
+inView(".card", function (element) {
+    animate(element, { opacity: [0, 1], y: [30, 0] }, { duration: 0.6 });
+});
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 300, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+renderer.setSize(document.getElementById("threeContainer").clientWidth, 300);
+document.getElementById("threeContainer").appendChild(renderer.domElement);
+
+const geometry = new THREE.IcosahedronGeometry(1.2, 0 );
+const material = new THREE.MeshStandardMaterial({ color: 0xc2185b, metalness: 0.6, roughness: 0.3});
+const gem = new THREE.Mesh(geometry, material);
+scene.add(gem);
+
+const light = new THREE.PointLight(0xffffff, 1.5);
+light.position.set(5, 5, 5);
+scene.add(light);
+scene.add(new THREE.AmbientLight(0x404040));
+
+camera.position.z = 4;
+
+function animateGem() {
+    requestAnimationFrame(animateGem);
+    gem.rotation.x += 0.005;
+    gem.rotation.y += 0.01;
+    renderer.render(scene, camera);
+}
+animateGem();

@@ -4,26 +4,40 @@
         <meta charset="UTF-8">
         <title>@mahaluxmifancy</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@400;600;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
+   
     <body>
+        <header>
         <nav>
-            <a href="#">Home</a> 
-        <a href="#">About</a> 
-    <a href="#">Contact</a>  
-   </nav>
+            <a href="#"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="#"><i class="fa-solid fa-circle-info"></i> About</a>
+            <a href="#"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </nav>
+        </header>
 
-        <h1>MAHALUXMI SHOE AND FANCY STORE</h1>
+        <main>
+            <section class="hero">
+            <h1>MAHALUXMI SHOE AND FANCY STORE</h1>
         <p>FANCY ITEMS AND SHOES</p>
+        </section>
 
-        <h2>My name is baldev</h2>
+        <section class="products-section">
+        <h2>our products</h2>
         <ul>
-            <li>SHOES AND SLIPPERS</li>
-            <li>BANGLES</li>
-            <li>COSMATIC ITEMS</li>
-            <li>STOLS AND JEWELEARY</li>
+            <li><i class="fa-solid fa-shoe-prints"></i> SHOES AND SLIPPERS</li>
+            <li><i class="fa-solid fa-ring"></i> BANGLES</li>
+            <li><i class="fa-solid fa-spray-can-sparkles"></i> COSMATIC ITEMS</li>
+            <li><i class="fa-solid fa-gem"></i> STOLS AND JEWELEARY</li>
         </ul>
+        </section>
+
         <a href="https://share.google/xuLti15xA7tFvHnlY">visit Google</a>
 
+        <section class="cards-section">
     <div class="card-container">
             <div class="card">
             <h3>what's new in umcoming days</h3>
@@ -42,8 +56,11 @@
             <p>take a project live for wrold to see.</p>
             <a href="#" class="btn">Learn More</a>
         </div>
+        <div id="threeContainer" style="width: 100%; height: 300px;"></div>
     </div>
+        </section>
 
+ <section class="playground-section">
         <button id="myBtn">click me</button>
         <p id="output">nothing clicked yet.</p>
 
@@ -52,23 +69,24 @@
     <button id="increaseBtn">+</button>
     <button id="decreaseBtn">-</button>
     </div>
+ </section>
 
-<div class="todo-section">
+<section class="todo-section">
     <h3>My Tasks</h3>
     <ul id="taskList"></ul>
-    </div>
-
     <input type="text" id="newTaskInput" placeholder="New task">
     <button id="addTaskBtn">Add Task</button>
-     
-    <div class="dog-section">
-<h3>Random Dog</h3>
-<img id="dogImage" src="" alt="A random dog" width="300">
-<br>
-<button id="fetchDogBtn">Get New Dog</button>
-    </div>
-    
+</section>
 
+<section class="dog-section">
+<h3>Random Dog</h3>
+<img id="dogImage" src="" alt="A random dog" width="300"><br>
+<button id="fetchDogBtn">Get New Dog</button>
+</section>
+    </main>
+    
+ <script src="https://cdn.jsdelivr.net/npm/motion@10.16.2/dist/motion.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/128/three.min.js"></script>
         <script src="script.js"></script>
     </body>
 </html>
