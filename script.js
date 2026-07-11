@@ -76,3 +76,4 @@ addTaskBtn.addEventListener("click", function() {
     newTaskInput.value = "";
 });
 });
+fetch("https://my-backend-nqso.onrender.com/api/tasks")
