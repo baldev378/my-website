@@ -16,24 +16,31 @@
         <a href="#"><i class="fa-solid fa-house"></i> Home</a>
         <a href="#"><i class="fa-solid fa-circle-info"></i> About</a>
         <a href="#"><i class="fa-solid fa-envelope"></i> Contact</a>
+        <a href="#"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="#"><i class="fa-solid fa-circle-info"></i> About</a>
+    <a href="#"><i class="fa-solid fa-envelope"></i> Contact</a>
+    <button id="accountBtn"><i class="fa-solid fa-user"></i> Sign In</button>
     </nav>
 </header>
 
 <main>
-    <section class="auth-section">
-        <h2>Account</h2>
-        <div id="authForms">
-            <input type="email" id="authEmail" placeholder="Email">
-            <input type="password" id="authPassword" placeholder="Password">
-            <button id="signupBtn">Sign Up</button>
-            <button id="loginBtn">Log In</button>
-        </div>
-        <div id="loggedInView" style="display: none;">
-            <p id ="welcomeMessage"></p>
-            <button id="logoutBtn">Log Out</button>
-            </div>
-        <p id="authStatus"></p>
-    </section>
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+<div id="authSidebar" class="auth-sidebar">
+    <button id="closeSidebarBtn" class="close-btn">&times;</button>
+    <h2>Account</h2>
+    <div id="authForms">
+        <input type="email" id="authEmail" placeholder="Email">
+        <input type="password" id="authPassword" placeholder="Password">
+        <button id="signupBtn">Sign Up</button>
+        <button id="loginBtn">Log In</button>
+    </div>
+    <div id="loggedInView" style="display: none;">
+        <p id="welcomeMessage"></p>
+        <button id="logoutBtn">Log Out</button>
+    </div>
+    <p id="authStatus"></p>
+</div>
 
             <section class="hero">
             <h1>MAHALUXMI SHOE AND FANCY STORE</h1>

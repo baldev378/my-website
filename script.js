@@ -191,3 +191,21 @@ logoutBtn.addEventListener("click", async function() {
     showLoggedOut();
     authStatus.textContent = "Logged out.";
 });
+
+const accountBtn = document.getElementById("accountBtn");
+const authSidebar = document.getElementById("authSidebar");
+const sidebarOverlay = document.getElementById("sidebarOverlay");
+const closeSidebarBtn = document.getElementById("closeSidebarBtn");
+
+accountBtn.addEventListener("click", function() {
+    authSidebar.classList.add("open");
+    sidebarOverlay.classList.add("open");
+});
+
+function closeSidebar() {
+    authSidebar.classList.remove("open");
+    sidebarOverlay.classList.remove("open");
+}
+
+closeSidebarBtn.addEventListener("click", closeSidebar);
+sidebarOverlay.addEventListener("click", closeSidebar);
