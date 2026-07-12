@@ -56,7 +56,7 @@ const newTaskInput = document.getElementById("newTaskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 
 addTaskBtn.addEventListener("click", function() {
-    fetch("http://my-backend-nqso.onrender.com/api/tasks", {
+    fetch("https://my-backend-nqso.onrender.com/api/tasks", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ task: newTaskInput.value })
