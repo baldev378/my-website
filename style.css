@@ -1,10 +1,11 @@
 body {
     font-family: 'lora', serif;
-    background-color: #fff5f7;
-    color: #4a2c32;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     max-width: 900px;
     margin: 0 auto;
     padding: 0 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, nav a, .btn {
@@ -15,12 +16,8 @@ section h2, section h3 {
     text-align: center;
 }
 
-h1 {
-    color: #c2185b;
-}
-
-h2 { 
-    color: #c2185b;
+h1, h2 {
+    color: var(--accent);
 }
 
 a {
@@ -30,13 +27,30 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
 nav {
     display: flex;
     gap: 20px;
-    background-color: #f8bbd0;
+    background-color: var(--nav-bg);
     padding: 15px;
     border-radius: 8px;
     justify-content: space-between;
+}
+
+:root {
+    --bg-color: #fff5f7;
+    --text-color: #4a2c32;
+    --card-bg: white;
+    --nav-bg: #f8bbd0;
+    --accent: #c2185b;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1418;
+    --text-color: #f0e0e5;
+    --card-bg: #2b2126;
+    --nav-bg: #3d2a30;
+    --accent: #f06292;
 }
 
 nav a {
@@ -57,7 +71,7 @@ nav a {
 }
 
 .card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 10px;
     padding: 20px;
     margin: 30px;
