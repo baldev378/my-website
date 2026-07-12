@@ -14,6 +14,9 @@ const authPassword = document.getElementById("authPassword");
 const signupBtn = document.getElementById("signupBtn");
 const loginBtn = document.getElementById("loginBtn");
 const authStatus = document.getElementById("authStatus");
+const loggedInView = document.getElementById("loggedInView");
+const welcomeMessage = document.getElementById("welcomeMessage");
+const logoutBtn = document.getElementById("logoutBtn");
 
 signupBtn.addEventListener("click", async function() {
     const { data, error } = await supabaseClient.auth.signUp({
@@ -25,19 +28,7 @@ signupBtn.addEventListener("click", async function() {
         authStatus.textContent = "Error: " + error.message;
     } else {
         authStatus.textContent = "Signed up! Check your email to confirm.";
-    }
-});
-
-loginBtn.addEventListener("click", async function() {
-    const { data, error } = await supabaseClient.auth.signIn({
-        email: authEmail.value,
-        password: authPassword.value
-    });
-
-    if (error) {
-        authStatus.textContent = "Error: " + error.message;
-    } else {
-        authStatus.textContent = "Logged in successfully!";
+        showLoggedIn(authEmail.value);
     }
 });
 
@@ -142,10 +133,66 @@ scene.add(new THREE.AmbientLight(0x404040));
 
 camera.position.z = 4;
 
+
+ let gemVisible = false;
+
+const observer = new IntersectionObserver(function(entries) {
+    gemVisible = entries[0].isIntersecting;
+});
+observer.observe(document.getElementById("threeContainer"));
+
 function animateGem() {
     requestAnimationFrame(animateGem);
-    gem.rotation.x += 0.005;
-    gem.rotation.y += 0.01;
-    renderer.render(scene, camera);
+    if (gemVisible) {
+        gem.rotation.x += 0.005;
+        gem.rotation.y += 0.01;
+        renderer.render(scene, camera);
+    }
 }
 animateGem();
+
+loginBtn.addEventListener("click", async function() {
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: authEmail.value,
+        password: authPassword.value
+    });
+
+    if (error) {
+        authStatus.textContent = "Error: " + error.message;
+    } else {
+        authStatus.textContent = "Logged in as " + data.user.email;
+        showLoggedIn(data.user.email);
+    }
+});
+
+const logggedInView = document.getElementById("loggInView")
+const authForms = document.getElementById("authForms");
+const welcomeMessage = document.getElementById("welcomeMessage");
+const logoutBtn = document.getElementById("logoutBtn");
+
+function showLoggedIn(email) {
+    authForms.style.display = "none";
+    loggedInView.style.display = "block";
+    welcomeMessage.textContent = "Welcome, " + email;
+}
+
+function showLoggedOut() {
+    authForms.style.display = "block";
+    loggedInView.style.display = "none";
+}
+
+async function checkSession() {
+    const { data } = await supabaseClient.auth.getSession();
+    if (data.session) {
+        showLoggedIn(data.session.user.email);
+    } else {
+        showLoggedOut();
+    }
+}
+checkSession();
+
+logoutBtn.addEventListener("click", async function() {
+    await supabaseClient.auth.signOut();
+    showLoggedOut();
+    authStatus.textContent = "Logged out.";
+});
