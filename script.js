@@ -17,6 +17,7 @@ const authStatus = document.getElementById("authStatus");
 const loggedInView = document.getElementById("loggedInView");
 const welcomeMessage = document.getElementById("welcomeMessage");
 const logoutBtn = document.getElementById("logoutBtn");
+const authForms = document.getElementById("authForms");
 
 signupBtn.addEventListener("click", async function() {
     const { data, error } = await supabaseClient.auth.signUp({
@@ -165,19 +166,13 @@ loginBtn.addEventListener("click", async function() {
     }
 });
 
-const logggedInView = document.getElementById("loggInView")
-const authForms = document.getElementById("authForms");
-const welcomeMessage = document.getElementById("welcomeMessage");
-const logoutBtn = document.getElementById("logoutBtn");
-
 function showLoggedIn(email) {
-    authForms.style.display = "none";
+    (document.getElementById("authForms")).style.display = "none";
     loggedInView.style.display = "block";
     welcomeMessage.textContent = "Welcome, " + email;
 }
-
 function showLoggedOut() {
-    authForms.style.display = "block";
+    (document.getElementById("authForms")).style.display = "block";
     loggedInView.style.display = "none";
 }
 
