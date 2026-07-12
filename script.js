@@ -227,3 +227,14 @@ themeToggle.addEventListener("click", function() {
     const current = document.documentElement.getAttribute("data-theme");
     setTheme(current === "dark" ? "light" : "dark");
 });
+
+const map = L.map("map").setView([27.207006, 73.742294], 15);
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors"
+}).addTo(map);
+
+L.marker([27.207006, 73.742294])
+    .addTo(map)
+    .bindPopup("Mahaluxmi Shoe and Fancy Store<br>Bus Stand Alai, Nagaur")
+    .openPopup();
