@@ -29,14 +29,24 @@ decreaseBtn.addEventListener("click", function() {
     }
 });
 
-const tasks = ["Learn HTML", "Learn CSS", "Learn Java"];
-const tasklist = document.getElementById("taskList");
+const taskList = document.getElementById("taskList");
 
-tasks.forEach(function(task) {
-    const li = document.createElement("li");
-    li.textContent = task;
-    tasklist.appendChild(li);
-});
+function loadTasks() {
+    fetch("https://my-backend-nqso.onrender.com/api/tasks")
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(tasks) {
+            taskList.innerHTML = "";
+            tasks.forEach(function(taskItem) {
+                const li = document.createElement("li");
+                li.textContent = taskItem.task;
+                taskList.appendChild(li);
+            });
+        });
+}
+
+loadTasks();
 
 const dogImage = document.getElementById("dogImage");
 const fetchDogBtn = document.getElementById("fetchDogBtn");
@@ -67,6 +77,7 @@ addTaskBtn.addEventListener("click", function() {
 .then(function(tasks) {
     console.log(tasks);
     newTaskInput.value = "";
+    loadTasks();
 });
 });
 
