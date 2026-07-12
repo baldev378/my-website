@@ -5,6 +5,42 @@ button.addEventListener("click", function() {
   output.textContent = "You clicked the button!";
 });
 
+const supabaseUrl = "https://sahgjtudozvxcwonqvwc.supabase.co";
+const supabaseKey = "sb_publishable_lqur-pU4RfgFR2k-Zj07Og_Y0G69ecV";
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+const authEmail = document.getElementById("authEmail");
+const authPassword = document.getElementById("authPassword");
+const signupBtn = document.getElementById("signupBtn");
+const loginBtn = document.getElementById("loginBtn");
+const authStatus = document.getElementById("authStatus");
+
+signupBtn.addEventListener("click", async function() {
+    const { data, error } = await supabaseClient.auth.signUp({
+        email: authEmail.value,
+        password: authPassword.value
+    });
+
+    if (error) {
+        authStatus.textContent = "Error: " + error.message;
+    } else {
+        authStatus.textContent = "Signed up! Check your email to confirm.";
+    }
+});
+
+loginBtn.addEventListener("click", async function() {
+    const { data, error } = await supabaseClient.auth.signIn({
+        email: authEmail.value,
+        password: authPassword.value
+    });
+
+    if (error) {
+        authStatus.textContent = "Error: " + error.message;
+    } else {
+        authStatus.textContent = "Logged in successfully!";
+    }
+});
+
 let count = 0;
 const countDisplay = document.getElementById("count");
 const increaseBtn = document.getElementById("increaseBtn");
