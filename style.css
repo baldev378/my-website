@@ -132,10 +132,18 @@ section {
     position: absolute;
     bottom: -80px;
     left: -80px;
+    width: 250px;
+    height: 250px;
+    background: rgba(248, 187, 208, 0.4);
+    border-radius: 50%;
+}
+
+.hero h1::after {
+    content: "";
+    display: block;
     width: 80px;
     height: 2px;
     background-color: #c2185b;
-    border-radius: 50%; 
     margin: 16px auto 0;
 }
 
@@ -205,4 +213,17 @@ footer {
 footer p {
     margin: 6px 0;
     font-size: 14px;
+}
+
+input, button {
+    font-family: 'Poppins', sans-serif;
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
