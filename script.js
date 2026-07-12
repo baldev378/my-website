@@ -238,3 +238,9 @@ L.marker([27.207006, 73.742294])
     .addTo(map)
     .bindPopup("Mahaluxmi Shoe and Fancy Store<br>Bus Stand Alai, Nagaur")
     .openPopup();
+
+const getLocationBtn = document.getElementById("getLocationBtn");
+
+getLocationBtn.addEventListener("click", function() {
+    document.getElementById("map").scrollIntoView({ behavior: "smooth" });
+});
