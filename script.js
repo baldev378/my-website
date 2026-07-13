@@ -244,3 +244,30 @@ const getLocationBtn = document.getElementById("getLocationBtn");
 getLocationBtn.addEventListener("click", function() {
     document.getElementById("map").scrollIntoView({ behavior: "smooth" });
 });
+
+const chatWindow = document.getElementById("chatWindow");
+const chatInput = document.getElementById("chatInput");
+const chatSendBtn = document.getElementById("chatSendBtn");
+
+chatSendBtn.addEventListener("click", async function() {
+    const userMessage = chatInput.value;
+    if (!userMessage) return;
+
+    chatWindow.innerHTML += "<p><strong>You:</strong> " + userMessage + "</p>";
+    chatInput.value = "";
+
+    const response = await fetch("https://my-backend-nqso.onrender.com/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMessage })
+    });
+
+    const data = await response.json();
+    chatWindow.innerHTML += "<p><strong>Store Assistant:</strong> " + data.reply + "</p>";
+});
+fetch("https://my-backend-nqso.onrender.com/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: "test" })
+}).then(r => r.json()).then(d => console.log(d));
+
