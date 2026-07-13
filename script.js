@@ -265,9 +265,3 @@ chatSendBtn.addEventListener("click", async function() {
     const data = await response.json();
     chatWindow.innerHTML += "<p><strong>Store Assistant:</strong> " + data.reply + "</p>";
 });
-fetch("https://my-backend-nqso.onrender.com/api/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: "test" })
-}).then(r => r.json()).then(d => console.log(d));
-
